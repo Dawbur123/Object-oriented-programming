@@ -13,8 +13,7 @@ public abstract class Calculator implements ActionListener {
 
     public static void createAndShowGUI() {
         JFrame frame = new JFrame("Calculator - v.0.1");
-        ImageIcon icon = new ImageIcon("Calculator_512.png");
-        frame.setIconImage(icon.getImage());
+        ImageIcon icon = new ImageIcon("C:\\Users\\mamgl\\IdeaProjects\\Programowanie\\src\\Lab6\\Calculator_32.png");
         frame.setLayout(new BorderLayout());
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.setLayout(new GridLayout(4, 4, 15, 10));
@@ -88,43 +87,48 @@ public abstract class Calculator implements ActionListener {
                                 firstNumber = Integer.parseInt(textField.getText());
                             }
                             if (wasNumberLastClicked) {
-                                if (operator.equals("subOperator")) {
-                                    if (isThisFirstNumber) {
-                                        firstNumber = Integer.parseInt(textField.getText());
-                                        isThisFirstNumber = false;
-                                    } else {
-                                        secondNumber = Integer.parseInt(textField.getText());
-                                        firstNumber -= secondNumber;
-                                    }
-                                } else if (operator.equals("mulOperator")) {
-                                    if (isThisFirstNumber) {
-                                        firstNumber = Integer.parseInt(textField.getText());
-                                        isThisFirstNumber = false;
-                                    } else {
-                                        secondNumber = Integer.parseInt(textField.getText());
-                                        firstNumber *= secondNumber;
-                                    }
-                                } else if (operator.equals("divOperator")) {
-                                    if (isThisFirstNumber) {
-                                        firstNumber = Integer.parseInt(textField.getText());
-                                        isThisFirstNumber = false;
-                                    } else {
-                                        secondNumber = Integer.parseInt(textField.getText());
-                                        if (!(secondNumber == 0)) {
-                                            firstNumber /= secondNumber;
-                                            isError = false;
+                                switch (operator) {
+                                    case "subOperator":
+                                        if (isThisFirstNumber) {
+                                            firstNumber = Integer.parseInt(textField.getText());
+                                            isThisFirstNumber = false;
                                         } else {
-                                            isError = true;
+                                            secondNumber = Integer.parseInt(textField.getText());
+                                            firstNumber -= secondNumber;
                                         }
-                                    }
-                                } else {
-                                    if (isThisFirstNumber) {
-                                        firstNumber = Integer.parseInt(textField.getText());
-                                        isThisFirstNumber = false;
-                                    } else {
-                                        secondNumber = Integer.parseInt(textField.getText());
-                                        firstNumber += secondNumber;
-                                    }
+                                        break;
+                                    case "mulOperator":
+                                        if (isThisFirstNumber) {
+                                            firstNumber = Integer.parseInt(textField.getText());
+                                            isThisFirstNumber = false;
+                                        } else {
+                                            secondNumber = Integer.parseInt(textField.getText());
+                                            firstNumber *= secondNumber;
+                                        }
+                                        break;
+                                    case "divOperator":
+                                        if (isThisFirstNumber) {
+                                            firstNumber = Integer.parseInt(textField.getText());
+                                            isThisFirstNumber = false;
+                                        } else {
+                                            secondNumber = Integer.parseInt(textField.getText());
+                                            if (!(secondNumber == 0)) {
+                                                firstNumber /= secondNumber;
+                                                isError = false;
+                                            } else {
+                                                isError = true;
+                                            }
+                                        }
+                                        break;
+                                    default:
+                                        if (isThisFirstNumber) {
+                                            firstNumber = Integer.parseInt(textField.getText());
+                                            isThisFirstNumber = false;
+                                        } else {
+                                            secondNumber = Integer.parseInt(textField.getText());
+                                            firstNumber += secondNumber;
+                                        }
+                                        break;
                                 }
                                 if (isError) {
                                     textField.setForeground(Color.RED);
@@ -149,43 +153,48 @@ public abstract class Calculator implements ActionListener {
                                 firstNumber = Integer.parseInt(textField.getText());
                             }
                             if (wasNumberLastClicked) {
-                                if (operator.equals("addOperator")) {
-                                    if (isThisFirstNumber) {
-                                        firstNumber = Integer.parseInt(textField.getText());
-                                        isThisFirstNumber = false;
-                                    } else {
-                                        secondNumber = Integer.parseInt(textField.getText());
-                                        firstNumber += secondNumber;
-                                    }
-                                } else if (operator.equals("mulOperator")) {
-                                    if (isThisFirstNumber) {
-                                        firstNumber = Integer.parseInt(textField.getText());
-                                        isThisFirstNumber = false;
-                                    } else {
-                                        secondNumber = Integer.parseInt(textField.getText());
-                                        firstNumber *= secondNumber;
-                                    }
-                                } else if (operator.equals("divOperator")) {
-                                    if (isThisFirstNumber) {
-                                        firstNumber = Integer.parseInt(textField.getText());
-                                        isThisFirstNumber = false;
-                                    } else {
-                                        secondNumber = Integer.parseInt(textField.getText());
-                                        if (!(secondNumber == 0)) {
-                                            firstNumber /= secondNumber;
-                                            isError = false;
+                                switch (operator) {
+                                    case "addOperator":
+                                        if (isThisFirstNumber) {
+                                            firstNumber = Integer.parseInt(textField.getText());
+                                            isThisFirstNumber = false;
                                         } else {
-                                            isError = true;
+                                            secondNumber = Integer.parseInt(textField.getText());
+                                            firstNumber += secondNumber;
                                         }
-                                    }
-                                } else {
-                                    if (isThisFirstNumber) {
-                                        firstNumber = Integer.parseInt(textField.getText());
-                                        isThisFirstNumber = false;
-                                    } else {
-                                        secondNumber = Integer.parseInt(textField.getText());
-                                        firstNumber -= secondNumber;
-                                    }
+                                        break;
+                                    case "mulOperator":
+                                        if (isThisFirstNumber) {
+                                            firstNumber = Integer.parseInt(textField.getText());
+                                            isThisFirstNumber = false;
+                                        } else {
+                                            secondNumber = Integer.parseInt(textField.getText());
+                                            firstNumber *= secondNumber;
+                                        }
+                                        break;
+                                    case "divOperator":
+                                        if (isThisFirstNumber) {
+                                            firstNumber = Integer.parseInt(textField.getText());
+                                            isThisFirstNumber = false;
+                                        } else {
+                                            secondNumber = Integer.parseInt(textField.getText());
+                                            if (!(secondNumber == 0)) {
+                                                firstNumber /= secondNumber;
+                                                isError = false;
+                                            } else {
+                                                isError = true;
+                                            }
+                                        }
+                                        break;
+                                    default:
+                                        if (isThisFirstNumber) {
+                                            firstNumber = Integer.parseInt(textField.getText());
+                                            isThisFirstNumber = false;
+                                        } else {
+                                            secondNumber = Integer.parseInt(textField.getText());
+                                            firstNumber -= secondNumber;
+                                        }
+                                        break;
                                 }
                                 if (isError) {
                                     textField.setForeground(Color.RED);
@@ -208,43 +217,48 @@ public abstract class Calculator implements ActionListener {
                                 firstNumber = Integer.parseInt(textField.getText());
                             }
                             if (wasNumberLastClicked) {
-                                if (operator.equals("subOperator")) {
-                                    if (isThisFirstNumber) {
-                                        firstNumber = Integer.parseInt(textField.getText());
-                                        isThisFirstNumber = false;
-                                    } else {
-                                        secondNumber = Integer.parseInt(textField.getText());
-                                        firstNumber -= secondNumber;
-                                    }
-                                } else if (operator.equals("addOperator")) {
-                                    if (isThisFirstNumber) {
-                                        firstNumber = Integer.parseInt(textField.getText());
-                                        isThisFirstNumber = false;
-                                    } else {
-                                        secondNumber = Integer.parseInt(textField.getText());
-                                        firstNumber += secondNumber;
-                                    }
-                                } else if (operator.equals("divOperator")) {
-                                    if (isThisFirstNumber) {
-                                        firstNumber = Integer.parseInt(textField.getText());
-                                        isThisFirstNumber = false;
-                                    } else {
-                                        secondNumber = Integer.parseInt(textField.getText());
-                                        if (!(secondNumber == 0)) {
-                                            firstNumber /= secondNumber;
-                                            isError = false;
+                                switch (operator) {
+                                    case "subOperator":
+                                        if (isThisFirstNumber) {
+                                            firstNumber = Integer.parseInt(textField.getText());
+                                            isThisFirstNumber = false;
                                         } else {
-                                            isError = true;
+                                            secondNumber = Integer.parseInt(textField.getText());
+                                            firstNumber -= secondNumber;
                                         }
-                                    }
-                                } else {
-                                    if (isThisFirstNumber) {
-                                        firstNumber = Integer.parseInt(textField.getText());
-                                        isThisFirstNumber = false;
-                                    } else {
-                                        secondNumber = Integer.parseInt(textField.getText());
-                                        firstNumber *= secondNumber;
-                                    }
+                                        break;
+                                    case "addOperator":
+                                        if (isThisFirstNumber) {
+                                            firstNumber = Integer.parseInt(textField.getText());
+                                            isThisFirstNumber = false;
+                                        } else {
+                                            secondNumber = Integer.parseInt(textField.getText());
+                                            firstNumber += secondNumber;
+                                        }
+                                        break;
+                                    case "divOperator":
+                                        if (isThisFirstNumber) {
+                                            firstNumber = Integer.parseInt(textField.getText());
+                                            isThisFirstNumber = false;
+                                        } else {
+                                            secondNumber = Integer.parseInt(textField.getText());
+                                            if (!(secondNumber == 0)) {
+                                                firstNumber /= secondNumber;
+                                                isError = false;
+                                            } else {
+                                                isError = true;
+                                            }
+                                        }
+                                        break;
+                                    default:
+                                        if (isThisFirstNumber) {
+                                            firstNumber = Integer.parseInt(textField.getText());
+                                            isThisFirstNumber = false;
+                                        } else {
+                                            secondNumber = Integer.parseInt(textField.getText());
+                                            firstNumber *= secondNumber;
+                                        }
+                                        break;
                                 }
                                 if (isError) {
                                     textField.setForeground(Color.RED);
@@ -269,43 +283,48 @@ public abstract class Calculator implements ActionListener {
                                 firstNumber = Integer.parseInt(textField.getText());
                             }
                             if (wasNumberLastClicked) {
-                                if (operator.equals("subOperator")) {
-                                    if (isThisFirstNumber) {
-                                        firstNumber = Integer.parseInt(textField.getText());
-                                        isThisFirstNumber = false;
-                                    } else {
-                                        secondNumber = Integer.parseInt(textField.getText());
-                                        firstNumber -= secondNumber;
-                                    }
-                                } else if (operator.equals("mulOperator")) {
-                                    if (isThisFirstNumber) {
-                                        firstNumber = Integer.parseInt(textField.getText());
-                                        isThisFirstNumber = false;
-                                    } else {
-                                        secondNumber = Integer.parseInt(textField.getText());
-                                        firstNumber *= secondNumber;
-                                    }
-                                } else if (operator.equals("addOperator")) {
-                                    if (isThisFirstNumber) {
-                                        firstNumber = Integer.parseInt(textField.getText());
-                                        isThisFirstNumber = false;
-                                    } else {
-                                        secondNumber = Integer.parseInt(textField.getText());
-                                        firstNumber += secondNumber;
-                                    }
-                                } else {
-                                    if (isThisFirstNumber) {
-                                        firstNumber = Integer.parseInt(textField.getText());
-                                        isThisFirstNumber = false;
-                                    } else {
-                                        secondNumber = Integer.parseInt(textField.getText());
-                                        if (!(secondNumber == 0)) {
-                                            firstNumber /= secondNumber;
-                                            isError = false;
+                                switch (operator) {
+                                    case "subOperator":
+                                        if (isThisFirstNumber) {
+                                            firstNumber = Integer.parseInt(textField.getText());
+                                            isThisFirstNumber = false;
                                         } else {
-                                            isError = true;
+                                            secondNumber = Integer.parseInt(textField.getText());
+                                            firstNumber -= secondNumber;
                                         }
-                                    }
+                                        break;
+                                    case "mulOperator":
+                                        if (isThisFirstNumber) {
+                                            firstNumber = Integer.parseInt(textField.getText());
+                                            isThisFirstNumber = false;
+                                        } else {
+                                            secondNumber = Integer.parseInt(textField.getText());
+                                            firstNumber *= secondNumber;
+                                        }
+                                        break;
+                                    case "addOperator":
+                                        if (isThisFirstNumber) {
+                                            firstNumber = Integer.parseInt(textField.getText());
+                                            isThisFirstNumber = false;
+                                        } else {
+                                            secondNumber = Integer.parseInt(textField.getText());
+                                            firstNumber += secondNumber;
+                                        }
+                                        break;
+                                    default:
+                                        if (isThisFirstNumber) {
+                                            firstNumber = Integer.parseInt(textField.getText());
+                                            isThisFirstNumber = false;
+                                        } else {
+                                            secondNumber = Integer.parseInt(textField.getText());
+                                            if (!(secondNumber == 0)) {
+                                                firstNumber /= secondNumber;
+                                                isError = false;
+                                            } else {
+                                                isError = true;
+                                            }
+                                        }
+                                        break;
                                 }
                                 if (isError) {
                                     textField.setForeground(Color.RED);
@@ -366,7 +385,7 @@ public abstract class Calculator implements ActionListener {
                             wasEqualLastClicked = true;
                             System.out.println(firstNumber + " " + secondNumber);
                         }
-                    break;
+                        break;
 
                 }
             }
@@ -445,6 +464,7 @@ public abstract class Calculator implements ActionListener {
 
                 EmptyBorder(10, 10, 10, 10));
         frame.add(mainPanel);
+        frame.setIconImage(icon.getImage());
         frame.setVisible(true);
         frame.setSize(400, 250);
         frame.setLocationRelativeTo(null);
