@@ -12,7 +12,7 @@ public abstract class Calculator implements ActionListener {
 
 
     public static void createAndShowGUI() {
-        JFrame frame = new JFrame("Calculator - v.0.1");
+        JFrame frame = new JFrame("Calculator - v.3.1");
         ImageIcon icon = new ImageIcon("C:\\Users\\mamgl\\IdeaProjects\\Programowanie\\src\\Lab6\\Calculator_32.png");
         frame.setLayout(new BorderLayout());
         JPanel buttonsPanel = new JPanel();
@@ -138,7 +138,6 @@ public abstract class Calculator implements ActionListener {
                                 }
 
                             }
-                            System.out.println(firstNumber + " " + secondNumber);
 
                             operator = "addOperator";
                             isAction = true;
@@ -203,7 +202,6 @@ public abstract class Calculator implements ActionListener {
                                     textField.setText(Integer.toString(firstNumber));
                                 }
                             }
-                            System.out.println(firstNumber + " " + secondNumber);
                             operator = "subOperator";
                             isAction = true;
                             wasNumberLastClicked = false;
@@ -268,7 +266,6 @@ public abstract class Calculator implements ActionListener {
                                 }
 
                             }
-                            System.out.println(firstNumber + " " + secondNumber);
 
                             operator = "mulOperator";
                             isAction = true;
@@ -334,7 +331,6 @@ public abstract class Calculator implements ActionListener {
                                 }
 
                             }
-                            System.out.println(firstNumber + " " + secondNumber);
 
                             operator = "divOperator";
                             isAction = true;
@@ -383,7 +379,6 @@ public abstract class Calculator implements ActionListener {
                                     break;
                             }
                             wasEqualLastClicked = true;
-                            System.out.println(firstNumber + " " + secondNumber);
                         }
                         break;
 
