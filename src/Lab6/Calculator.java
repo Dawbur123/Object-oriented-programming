@@ -35,7 +35,8 @@ public abstract class Calculator implements ActionListener {
             boolean isError = false;
             boolean isThisFirstNumber = true;
             boolean wasNumberLastClicked = false;
-            boolean wasEqualLastClicked = false;
+            boolean wasEqualLastClicked = true;
+            boolean wasOperatorLastClicked = false;
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -51,21 +52,21 @@ public abstract class Calculator implements ActionListener {
                     case "8":
                     case "9":
                         if(!isError) {
-                            if (isAction | textField.getText().equals("0")) {
+                            if(wasEqualLastClicked) {
                                 textField.setText(e.getActionCommand());
-                            } else {
-                                textField.setText(textField.getText().concat(e.getActionCommand()));
-                            }
-                            if (wasEqualLastClicked) {
                                 operator = "noOperator";
                                 firstNumber = 0;
                                 secondNumber = 0;
                             }
+                            if(wasOperatorLastClicked) textField.setText(e.getActionCommand());
+                            if(wasNumberLastClicked)  textField.setText(textField.getText().concat(e.getActionCommand()));
 
                             isAction = false;
                             wasNumberLastClicked = true;
+                            wasOperatorLastClicked = false;
                             wasEqualLastClicked = false;
                         }
+                        System.out.println(operator);
                         break;
 
                     case "C":
@@ -74,10 +75,11 @@ public abstract class Calculator implements ActionListener {
                         operator = "noOperator";
                         isAction = true;
                         wasNumberLastClicked = false;
+                        wasOperatorLastClicked = false;
                         isThisFirstNumber = true;
                         firstNumber = 0;
                         secondNumber = 0;
-                        wasEqualLastClicked = false;
+                        wasEqualLastClicked = true;
                         isError = false;
                         break;
 
@@ -85,6 +87,7 @@ public abstract class Calculator implements ActionListener {
                         if (!isError) {
                             if (wasEqualLastClicked) {
                                 firstNumber = Integer.parseInt(textField.getText());
+                                isThisFirstNumber = false;
                             }
                             if (wasNumberLastClicked) {
                                 switch (operator) {
@@ -120,6 +123,11 @@ public abstract class Calculator implements ActionListener {
                                             }
                                         }
                                         break;
+                                    case "noOperator":
+                                        secondNumber = Integer.parseInt(textField.getText());
+                                        firstNumber = secondNumber;
+                                        isThisFirstNumber = false;
+                                        break;
                                     default:
                                         if (isThisFirstNumber) {
                                             firstNumber = Integer.parseInt(textField.getText());
@@ -138,9 +146,12 @@ public abstract class Calculator implements ActionListener {
                                 }
 
                             }
+                            System.out.println(firstNumber + " " + secondNumber + " " + isThisFirstNumber);
+
 
                             operator = "addOperator";
                             isAction = true;
+                            wasOperatorLastClicked = true;
                             wasNumberLastClicked = false;
                             wasEqualLastClicked = false;
                         }
@@ -150,6 +161,7 @@ public abstract class Calculator implements ActionListener {
                         if (!isError) {
                             if (wasEqualLastClicked) {
                                 firstNumber = Integer.parseInt(textField.getText());
+                                isThisFirstNumber = false;
                             }
                             if (wasNumberLastClicked) {
                                 switch (operator) {
@@ -185,6 +197,11 @@ public abstract class Calculator implements ActionListener {
                                             }
                                         }
                                         break;
+                                    case "noOperator":
+                                        secondNumber = Integer.parseInt(textField.getText());
+                                        firstNumber = secondNumber;
+                                        isThisFirstNumber = false;
+                                        break;
                                     default:
                                         if (isThisFirstNumber) {
                                             firstNumber = Integer.parseInt(textField.getText());
@@ -202,8 +219,13 @@ public abstract class Calculator implements ActionListener {
                                     textField.setText(Integer.toString(firstNumber));
                                 }
                             }
+                            System.out.println(firstNumber + " " + secondNumber + " " + isThisFirstNumber);
+
+
+
                             operator = "subOperator";
                             isAction = true;
+                            wasOperatorLastClicked = true;
                             wasNumberLastClicked = false;
                             wasEqualLastClicked = false;
                         }
@@ -213,6 +235,7 @@ public abstract class Calculator implements ActionListener {
                         if (!isError) {
                             if (wasEqualLastClicked) {
                                 firstNumber = Integer.parseInt(textField.getText());
+                                isThisFirstNumber = false;
                             }
                             if (wasNumberLastClicked) {
                                 switch (operator) {
@@ -248,6 +271,11 @@ public abstract class Calculator implements ActionListener {
                                             }
                                         }
                                         break;
+                                    case "noOperator":
+                                        secondNumber = Integer.parseInt(textField.getText());
+                                        firstNumber = secondNumber;
+                                        isThisFirstNumber = false;
+                                        break;
                                     default:
                                         if (isThisFirstNumber) {
                                             firstNumber = Integer.parseInt(textField.getText());
@@ -266,9 +294,12 @@ public abstract class Calculator implements ActionListener {
                                 }
 
                             }
+                            System.out.println(firstNumber + " " + secondNumber);
+
 
                             operator = "mulOperator";
                             isAction = true;
+                            wasOperatorLastClicked = true;
                             wasNumberLastClicked = false;
                             wasEqualLastClicked = false;
                         }
@@ -278,6 +309,7 @@ public abstract class Calculator implements ActionListener {
                         if (!isError) {
                             if (wasEqualLastClicked) {
                                 firstNumber = Integer.parseInt(textField.getText());
+                                isThisFirstNumber = false;
                             }
                             if (wasNumberLastClicked) {
                                 switch (operator) {
@@ -308,6 +340,12 @@ public abstract class Calculator implements ActionListener {
                                             firstNumber += secondNumber;
                                         }
                                         break;
+                                    case "noOperator":
+                                        secondNumber = Integer.parseInt(textField.getText());
+                                        firstNumber = secondNumber;
+                                        isThisFirstNumber = false;
+
+                                        break;
                                     default:
                                         if (isThisFirstNumber) {
                                             firstNumber = Integer.parseInt(textField.getText());
@@ -331,9 +369,12 @@ public abstract class Calculator implements ActionListener {
                                 }
 
                             }
+                            System.out.println(firstNumber + " " + secondNumber + " " + isThisFirstNumber);
+
 
                             operator = "divOperator";
                             isAction = true;
+                            wasOperatorLastClicked = true;
                             wasNumberLastClicked = false;
                             wasEqualLastClicked = false;
                         }
@@ -341,46 +382,55 @@ public abstract class Calculator implements ActionListener {
 
                     case "=":
                         if (!isError) {
-                            wasNumberLastClicked = false;
-                            isAction = true;
+
                             if (!wasEqualLastClicked) {
                                 secondNumber = Integer.parseInt(textField.getText());
                             }
-                            switch (operator) {
-                                case "addOperator":
-                                    firstNumber += secondNumber;
-                                    textField.setText(Integer.toString(firstNumber));
-                                    break;
-
-                                case "subOperator":
-                                    firstNumber -= secondNumber;
-                                    textField.setText(Integer.toString(firstNumber));
-                                    break;
-
-                                case "mulOperator":
-                                    firstNumber *= secondNumber;
-                                    textField.setText(Integer.toString(firstNumber));
-                                    break;
-
-                                case "divOperator":
-                                    if (!(secondNumber == 0)) {
-                                        firstNumber /= secondNumber;
+                            if(wasNumberLastClicked || wasEqualLastClicked || wasOperatorLastClicked) {
+                                switch (operator) {
+                                    case "addOperator":
+                                        firstNumber += secondNumber;
                                         textField.setText(Integer.toString(firstNumber));
-                                        isError = false;
-                                    } else {
-                                        textField.setForeground(Color.RED);
-                                        textField.setText("Division by zero!");
-                                        isError = true;
-                                    }
-                                    break;
+                                        break;
 
-                                case "noOperator":
-                                    firstNumber = secondNumber;
-                                    break;
+                                    case "subOperator":
+                                        firstNumber -= secondNumber;
+                                        textField.setText(Integer.toString(firstNumber));
+                                        break;
+
+                                    case "mulOperator":
+                                        firstNumber *= secondNumber;
+                                        textField.setText(Integer.toString(firstNumber));
+                                        break;
+
+                                    case "divOperator":
+                                        if (!(secondNumber == 0)) {
+                                            firstNumber /= secondNumber;
+                                            textField.setText(Integer.toString(firstNumber));
+                                            isError = false;
+                                        } else {
+                                            textField.setForeground(Color.RED);
+                                            textField.setText("Division by zero!");
+                                            isError = true;
+                                        }
+                                        break;
+
+                                    case "noOperator":
+                                        firstNumber = secondNumber;
+                                        isThisFirstNumber = false;
+                                        break;
+                                }
                             }
+                            System.out.println(firstNumber + " " + secondNumber);
+
                             wasEqualLastClicked = true;
+                            wasNumberLastClicked = false;
+                            wasOperatorLastClicked = false;
+                            isAction = true;
                         }
+
                         break;
+
 
                 }
             }
